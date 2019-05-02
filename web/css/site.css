@@ -1,0 +1,318 @@
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+    padding: 15px;
+    border: none;
+}
+
+@media(max-width:767px) {
+    .nav li > form > button.logout {
+        display:block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+    }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+    text-decoration: none;
+}
+
+.nav > li > form > button.logout:focus {
+    outline: none;
+}
+
+.wrapper {
+    width: 68em;
+}
+
+
+
+
+// Start here
+
+$title-color: #222;
+$font-color: #777;
+$light-gray: #eee;
+$primary: #E91E63;
+$secondary: #42A5F5;
+
+// product
+$product-box-shadow: 0px 0px 0px 1px $light-gray;
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: $font-color;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+
+
+.product-grid {
+    width: 60em;
+    margin: 2rem auto;
+    // TODO: apply clearfix
+    
+
+    // If want a flexbox grid.
+    &.product-grid--flexbox {
+        .product-grid__wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .product-grid__title {
+            height: auto;
+            
+            &:after { display: none; }
+        }
+    }
+    
+
+    &__wrapper {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        //background: #000;
+    }
+    
+    &__product-wrapper {
+        padding: 1rem;
+        float: left;
+        width: 33.33333%;
+    }
+    
+    
+    &__product {
+        padding: 1rem;
+        // width: 33.33333%;
+        // float: left;
+        position: relative;
+        cursor: pointer;
+        background: #fff;
+        //box-shadow: $product-box-shadow;
+        border-radius: 4px;
+        
+        &:hover {
+            box-shadow: $product-box-shadow;
+            z-index: 50;
+            
+            .product-grid__extend {
+                display: block;
+            }
+        }
+    }
+    
+            
+    // product image wrapper
+    &__img-wrapper {
+        width: 100%;
+        text-align: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        height: 150px;
+    }
+    
+    
+        // product image
+        &__img {
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+    
+    
+    //  product title
+    &__title {
+        margin-top: .875rem;
+        display: block;
+        font-size: 1.125em;
+        color: $title-color;
+        height: 3em;
+        overflow: hidden;
+        position: relative;
+        
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 2.4em;
+            height: 1.5em; // magic number
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+            //background: red;
+        }
+    }
+    
+    &__price {
+        color: $primary;
+        font-weight: bold;
+        letter-spacing: .4px;
+    }
+    
+    
+    // extend wrapper
+    &__extend-wrapper {
+        position: relative;
+    }
+    
+    // extended elements
+    // show when hover .product-grid__product
+    &__extend {
+        display: none;
+        position: absolute;
+        padding: 0 1rem 1rem 1rem;
+        margin: .4375rem -1rem 0;
+        box-shadow: $product-box-shadow;
+        background: #fff;
+        border-radius: 0 0 4px 4px;
+        
+        &:before {
+            content: "";
+            height: .875rem;
+            width: 100%;
+            position: absolute;
+            top: -.4375rem;
+            left: 0;
+            background: #fff;
+        }
+    }
+    
+    
+    // product description  
+    &__description {
+        font-size: .875em;
+        //margin-top: .875rem;
+        margin-top: .4375rem;
+        margin-bottom: 0;
+    }
+    
+    
+    // buttons
+    &__btn {
+        display: inline-block;
+        font-size: .875em;
+        color: $font-color;
+        background: $light-gray;
+        padding: .5em .625em;
+        margin-top: .875rem;
+        margin-right: .625rem;
+        cursor: pointer;
+        border-radius: 4px;
+        
+        i.fa { margin-right: .3125rem;}
+    }
+    
+    
+    &__add-to-cart {
+        color: #fff;
+        background: $primary;
+        
+        &:hover { background: lighten($primary, 10%); }
+    }
+    
+    &__view {
+        color: $font-color;
+        background: $light-gray;
+        
+        &:hover { background: lighten($light-gray, 10%); }
+    }
+}
